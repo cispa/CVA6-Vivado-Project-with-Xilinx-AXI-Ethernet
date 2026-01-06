@@ -1,13 +1,14 @@
 # CVA6 RISC-V CPU and SoC - Vivado Project and Software Stack
 
 ## Overview
-This repository contains (scripts generating) a Vivado 2023.2 project built around the [CVA6 RISC-V CPU](https://github.com/openhwgroup/cva6) and a [software stack](https://github.com/pulp-platform/cva6-sdk) including u-boot and embedded linux.
+This repository contains (scripts generating) a Vivado 2024.2 project built around the [CVA6 RISC-V CPU](https://github.com/openhwgroup/cva6) and a [software stack](https://github.com/pulp-platform/cva6-sdk) including u-boot and embedded linux.
 This project currently only supports the Digilent Genesys2 board.
 
 ## Hardware Stack
 
 Currently, the SoC contains the following devices:
 - the cva6 CPU in 64-bit configuration with SV39 MMU @50MHz
+- HPDCache in write-back mode with support for Zicbom instructions (cache clean/invalidate/flush)
 - CLINT (core-local interrupt controller) and PLIC (platform-level interrupt controller)
 - UART console, mapped to the USB UART 
 - Xilinx SPI, configured for booting from the connected SD card
@@ -27,7 +28,7 @@ The software stack contains:
 ## Running the image
 
 Run the following steps in-order to execute the project.
-This assumes Xilinx Vivado to installed in `/opt/Xilinx/Vivado/2023.2/` (you can create a corresponding symlink).
+This assumes Xilinx Vivado to installed in `/opt/Xilinx/Vivado/2024.2/` (you can create a corresponding symlink).
 
 ### Compiling hardware and software stacks
 
@@ -106,7 +107,6 @@ Hardware
 - CVA6 has support for additional boards, such as the Nexys Video.
 - CVA6 does not use a Vivado project and the IP integrator, but instead provides custom scripts for synthesizing IP cores and configures the SoC in SystemVerilog as well.
 - This fork of CVA6 adds support for Xilinx Ethernet in the Device Tree contained in the Boot ROM.
-- This fork of CVA6 includes an option to make the non-standard data cache control register writable in S-Mode. This is used by u-boot and Linux to flush the cache after writing and before reading DMA descriptors to ensure consistency.
 
 Software
 - The TFTP boot for u-boot is unique to this fork.
