@@ -369,19 +369,37 @@ proc create_hier_cell_eth_0 { parentCell nameHier } {
   connect_bd_intf_net -intf_net s_axi_1 [get_bd_intf_pins s_axi] [get_bd_intf_pins axi_ethernet_0/s_axi]
 
   # Create port connections
-  connect_bd_net -net axi_dma_0_mm2s_cntrl_reset_out_n [get_bd_pins axi_dma_0/mm2s_cntrl_reset_out_n] [get_bd_pins axi_ethernet_0/axi_txc_arstn]
-  connect_bd_net -net axi_dma_0_mm2s_introut [get_bd_pins axi_dma_0/mm2s_introut] [get_bd_pins mm2s_introut]
-  connect_bd_net -net axi_dma_0_mm2s_prmry_reset_out_n [get_bd_pins axi_dma_0/mm2s_prmry_reset_out_n] [get_bd_pins axi_ethernet_0/axi_txd_arstn]
-  connect_bd_net -net axi_dma_0_s2mm_introut [get_bd_pins axi_dma_0/s2mm_introut] [get_bd_pins s2mm_introut]
-  connect_bd_net -net axi_dma_0_s2mm_prmry_reset_out_n [get_bd_pins axi_dma_0/s2mm_prmry_reset_out_n] [get_bd_pins axi_ethernet_0/axi_rxd_arstn]
-  connect_bd_net -net axi_dma_0_s2mm_sts_reset_out_n [get_bd_pins axi_dma_0/s2mm_sts_reset_out_n] [get_bd_pins axi_ethernet_0/axi_rxs_arstn]
-  connect_bd_net -net axi_ethernet_0_interrupt [get_bd_pins axi_ethernet_0/interrupt] [get_bd_pins mac_irq]
-  connect_bd_net -net axi_ethernet_0_phy_rst_n1 [get_bd_pins axi_ethernet_0/phy_rst_n] [get_bd_pins phy_reset_out]
-  connect_bd_net -net axi_resetn_1 [get_bd_pins axi_resetn] [get_bd_pins axi_dma_0/axi_resetn]
-  connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_pins m_axi_sg_aclk] [get_bd_pins axi_dma_0/m_axi_sg_aclk] [get_bd_pins axi_dma_0/m_axi_mm2s_aclk] [get_bd_pins axi_dma_0/m_axi_s2mm_aclk] [get_bd_pins axi_dma_0/s_axi_lite_aclk] [get_bd_pins axi_ethernet_0/s_axi_lite_clk] [get_bd_pins axi_ethernet_0/axis_clk]
-  connect_bd_net -net gtx_clk_1 [get_bd_pins gtx_clk] [get_bd_pins axi_ethernet_0/gtx_clk]
-  connect_bd_net -net ref_clk_1 [get_bd_pins ref_clk] [get_bd_pins axi_ethernet_0/ref_clk]
-  connect_bd_net -net s_axi_lite_resetn_1 [get_bd_pins s_axi_lite_resetn] [get_bd_pins axi_ethernet_0/s_axi_lite_resetn]
+  connect_bd_net -net axi_dma_0_mm2s_cntrl_reset_out_n  [get_bd_pins axi_dma_0/mm2s_cntrl_reset_out_n] \
+  [get_bd_pins axi_ethernet_0/axi_txc_arstn]
+  connect_bd_net -net axi_dma_0_mm2s_introut  [get_bd_pins axi_dma_0/mm2s_introut] \
+  [get_bd_pins mm2s_introut]
+  connect_bd_net -net axi_dma_0_mm2s_prmry_reset_out_n  [get_bd_pins axi_dma_0/mm2s_prmry_reset_out_n] \
+  [get_bd_pins axi_ethernet_0/axi_txd_arstn]
+  connect_bd_net -net axi_dma_0_s2mm_introut  [get_bd_pins axi_dma_0/s2mm_introut] \
+  [get_bd_pins s2mm_introut]
+  connect_bd_net -net axi_dma_0_s2mm_prmry_reset_out_n  [get_bd_pins axi_dma_0/s2mm_prmry_reset_out_n] \
+  [get_bd_pins axi_ethernet_0/axi_rxd_arstn]
+  connect_bd_net -net axi_dma_0_s2mm_sts_reset_out_n  [get_bd_pins axi_dma_0/s2mm_sts_reset_out_n] \
+  [get_bd_pins axi_ethernet_0/axi_rxs_arstn]
+  connect_bd_net -net axi_ethernet_0_interrupt  [get_bd_pins axi_ethernet_0/interrupt] \
+  [get_bd_pins mac_irq]
+  connect_bd_net -net axi_ethernet_0_phy_rst_n1  [get_bd_pins axi_ethernet_0/phy_rst_n] \
+  [get_bd_pins phy_reset_out]
+  connect_bd_net -net axi_resetn_1  [get_bd_pins axi_resetn] \
+  [get_bd_pins axi_dma_0/axi_resetn]
+  connect_bd_net -net clk_wiz_0_clk_out1  [get_bd_pins m_axi_sg_aclk] \
+  [get_bd_pins axi_dma_0/m_axi_sg_aclk] \
+  [get_bd_pins axi_dma_0/m_axi_mm2s_aclk] \
+  [get_bd_pins axi_dma_0/m_axi_s2mm_aclk] \
+  [get_bd_pins axi_dma_0/s_axi_lite_aclk] \
+  [get_bd_pins axi_ethernet_0/s_axi_lite_clk] \
+  [get_bd_pins axi_ethernet_0/axis_clk]
+  connect_bd_net -net gtx_clk_1  [get_bd_pins gtx_clk] \
+  [get_bd_pins axi_ethernet_0/gtx_clk]
+  connect_bd_net -net ref_clk_1  [get_bd_pins ref_clk] \
+  [get_bd_pins axi_ethernet_0/ref_clk]
+  connect_bd_net -net s_axi_lite_resetn_1  [get_bd_pins s_axi_lite_resetn] \
+  [get_bd_pins axi_ethernet_0/s_axi_lite_resetn]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -475,12 +493,13 @@ proc create_hier_cell_northbridge { parentCell nameHier } {
     CONFIG.ENABLE_PROTOCOL_CHECKERS {0} \
     CONFIG.NUM_MI {13} \
     CONFIG.NUM_SI {4} \
-    CONFIG.S00_HAS_DATA_FIFO {2} \
-    CONFIG.S01_HAS_DATA_FIFO {2} \
-    CONFIG.S02_HAS_DATA_FIFO {2} \
-    CONFIG.S03_HAS_DATA_FIFO {2} \
+    CONFIG.S00_HAS_DATA_FIFO {0} \
+    CONFIG.S01_HAS_DATA_FIFO {0} \
+    CONFIG.S02_HAS_DATA_FIFO {0} \
+    CONFIG.S03_HAS_DATA_FIFO {0} \
     CONFIG.S04_HAS_DATA_FIFO {2} \
-    CONFIG.STRATEGY {2} \
+    CONFIG.STRATEGY {0} \
+    CONFIG.SYNCHRONIZATION_STAGES {2} \
   ] $axi_interconnect_0
 
 
@@ -536,16 +555,64 @@ proc create_hier_cell_northbridge { parentCell nameHier } {
   connect_bd_intf_net -intf_net [get_bd_intf_nets axi_riscv_atomics_wrapper_0_m_axi_out] [get_bd_intf_pins axi_riscv_atomics_wrapper_0/m_axi_out] [get_bd_intf_pins axidebug_0/SLOT_1_AXI]
 
   # Create port connections
-  connect_bd_net -net S02_ARESETN_1 [get_bd_pins cpu_peripheral_aresetn] [get_bd_pins axidebug_0/resetn] [get_bd_pins axidebug_0/probe4]
-  connect_bd_net -net S02_ARESETN_2 [get_bd_pins cpu_interconnect_aresetn] [get_bd_pins axi_interconnect_0/S02_ARESETN] [get_bd_pins axi_riscv_atomics_wrapper_0/aresetn] [get_bd_pins axidebug_0/probe3] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins axi_interconnect_0/S01_ARESETN] [get_bd_pins axi_interconnect_0/M01_ARESETN] [get_bd_pins axi_interconnect_0/M02_ARESETN] [get_bd_pins axi_interconnect_0/M03_ARESETN] [get_bd_pins axi_interconnect_0/M04_ARESETN] [get_bd_pins axi_interconnect_0/M05_ARESETN] [get_bd_pins axi_interconnect_0/M06_ARESETN] [get_bd_pins axi_interconnect_0/M07_ARESETN] [get_bd_pins axi_interconnect_0/M08_ARESETN] [get_bd_pins axi_interconnect_0/M10_ARESETN] [get_bd_pins axi_interconnect_0/M09_ARESETN] [get_bd_pins axi_interconnect_0/S03_ARESETN] [get_bd_pins axi_interconnect_0/M11_ARESETN]
-  connect_bd_net -net aclk1_1 [get_bd_pins clk_cpu] [get_bd_pins axi_interconnect_0/S02_ACLK] [get_bd_pins axi_riscv_atomics_wrapper_0/CLK] [get_bd_pins axidebug_0/clk]
-  connect_bd_net -net axi_riscv_atomics_wrapper_0_m_axi_out_awatop [get_bd_pins cpu_atop_in] [get_bd_pins axidebug_0/probe0] [get_bd_pins axi_riscv_atomics_wrapper_0/s_axi_in_awatop] [get_bd_pins axidebug_0/probe1]
-  connect_bd_net -net axi_riscv_atomics_wrapper_0_m_axi_out_awatop1 [get_bd_pins axi_riscv_atomics_wrapper_0/m_axi_out_awatop] [get_bd_pins axidebug_0/probe2]
-  connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_pins peripheral_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins axi_interconnect_0/M01_ACLK] [get_bd_pins axi_interconnect_0/S01_ACLK] [get_bd_pins axi_interconnect_0/M02_ACLK] [get_bd_pins axi_interconnect_0/M03_ACLK] [get_bd_pins axi_interconnect_0/M04_ACLK] [get_bd_pins axi_interconnect_0/M05_ACLK] [get_bd_pins axi_interconnect_0/M06_ACLK] [get_bd_pins axi_interconnect_0/M07_ACLK] [get_bd_pins axi_interconnect_0/M08_ACLK] [get_bd_pins axi_interconnect_0/M09_ACLK] [get_bd_pins axi_interconnect_0/M10_ACLK] [get_bd_pins axi_interconnect_0/S03_ACLK] [get_bd_pins axi_interconnect_0/M11_ACLK]
-  connect_bd_net -net dummy_irq_in_1 [get_bd_pins dummy_irq_in] [get_bd_pins axi_riscv_atomics_wrapper_0/dummy_irq_in]
-  connect_bd_net -net mig_7series_0_ui_clk [get_bd_pins mig_aclk] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/M12_ACLK]
-  connect_bd_net -net probe5_1 [get_bd_pins ndmreset] [get_bd_pins axidebug_0/probe5]
-  connect_bd_net -net reset_polarity_conv_Res [get_bd_pins mig_aresetn] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/M12_ARESETN]
+  connect_bd_net -net S02_ARESETN_1  [get_bd_pins cpu_peripheral_aresetn] \
+  [get_bd_pins axidebug_0/resetn] \
+  [get_bd_pins axidebug_0/probe4]
+  connect_bd_net -net S02_ARESETN_2  [get_bd_pins cpu_interconnect_aresetn] \
+  [get_bd_pins axi_interconnect_0/S02_ARESETN] \
+  [get_bd_pins axi_riscv_atomics_wrapper_0/aresetn] \
+  [get_bd_pins axidebug_0/probe3] \
+  [get_bd_pins axi_interconnect_0/ARESETN] \
+  [get_bd_pins axi_interconnect_0/S00_ARESETN] \
+  [get_bd_pins axi_interconnect_0/S01_ARESETN] \
+  [get_bd_pins axi_interconnect_0/M01_ARESETN] \
+  [get_bd_pins axi_interconnect_0/M02_ARESETN] \
+  [get_bd_pins axi_interconnect_0/M03_ARESETN] \
+  [get_bd_pins axi_interconnect_0/M04_ARESETN] \
+  [get_bd_pins axi_interconnect_0/M05_ARESETN] \
+  [get_bd_pins axi_interconnect_0/M06_ARESETN] \
+  [get_bd_pins axi_interconnect_0/M07_ARESETN] \
+  [get_bd_pins axi_interconnect_0/M08_ARESETN] \
+  [get_bd_pins axi_interconnect_0/M10_ARESETN] \
+  [get_bd_pins axi_interconnect_0/M09_ARESETN] \
+  [get_bd_pins axi_interconnect_0/S03_ARESETN] \
+  [get_bd_pins axi_interconnect_0/M11_ARESETN]
+  connect_bd_net -net aclk1_1  [get_bd_pins clk_cpu] \
+  [get_bd_pins axi_interconnect_0/S02_ACLK] \
+  [get_bd_pins axi_riscv_atomics_wrapper_0/CLK] \
+  [get_bd_pins axidebug_0/clk]
+  connect_bd_net -net axi_riscv_atomics_wrapper_0_m_axi_out_awatop  [get_bd_pins cpu_atop_in] \
+  [get_bd_pins axidebug_0/probe0] \
+  [get_bd_pins axi_riscv_atomics_wrapper_0/s_axi_in_awatop] \
+  [get_bd_pins axidebug_0/probe1]
+  connect_bd_net -net axi_riscv_atomics_wrapper_0_m_axi_out_awatop1  [get_bd_pins axi_riscv_atomics_wrapper_0/m_axi_out_awatop] \
+  [get_bd_pins axidebug_0/probe2]
+  connect_bd_net -net clk_wiz_0_clk_out1  [get_bd_pins peripheral_aclk] \
+  [get_bd_pins axi_interconnect_0/ACLK] \
+  [get_bd_pins axi_interconnect_0/S00_ACLK] \
+  [get_bd_pins axi_interconnect_0/M01_ACLK] \
+  [get_bd_pins axi_interconnect_0/S01_ACLK] \
+  [get_bd_pins axi_interconnect_0/M02_ACLK] \
+  [get_bd_pins axi_interconnect_0/M03_ACLK] \
+  [get_bd_pins axi_interconnect_0/M04_ACLK] \
+  [get_bd_pins axi_interconnect_0/M05_ACLK] \
+  [get_bd_pins axi_interconnect_0/M06_ACLK] \
+  [get_bd_pins axi_interconnect_0/M07_ACLK] \
+  [get_bd_pins axi_interconnect_0/M08_ACLK] \
+  [get_bd_pins axi_interconnect_0/M09_ACLK] \
+  [get_bd_pins axi_interconnect_0/M10_ACLK] \
+  [get_bd_pins axi_interconnect_0/S03_ACLK] \
+  [get_bd_pins axi_interconnect_0/M11_ACLK]
+  connect_bd_net -net dummy_irq_in_1  [get_bd_pins dummy_irq_in] \
+  [get_bd_pins axi_riscv_atomics_wrapper_0/dummy_irq_in]
+  connect_bd_net -net mig_7series_0_ui_clk  [get_bd_pins mig_aclk] \
+  [get_bd_pins axi_interconnect_0/M00_ACLK] \
+  [get_bd_pins axi_interconnect_0/M12_ACLK]
+  connect_bd_net -net probe5_1  [get_bd_pins ndmreset] \
+  [get_bd_pins axidebug_0/probe5]
+  connect_bd_net -net reset_polarity_conv_Res  [get_bd_pins mig_aresetn] \
+  [get_bd_pins axi_interconnect_0/M00_ARESETN] \
+  [get_bd_pins axi_interconnect_0/M12_ARESETN]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -921,53 +988,148 @@ proc create_hier_cell_northbridge { parentCell nameHier } {
   connect_bd_intf_net -intf_net sys_diff_clock_1 [get_bd_intf_ports sys_diff_clock] [get_bd_intf_pins mig_7series_0/SYS_CLK]
 
   # Create port connections
-  connect_bd_net -net ariane_peripherals_0_irq_out [get_bd_pins ariane_peripherals_0/irq_out] [get_bd_pins northbridge/dummy_irq_in] [get_bd_pins irq_ila/probe0] [get_bd_pins cpu_0/irqs_in]
-  connect_bd_net -net atop_tieoff_0_dout [get_bd_pins atop_tieoff_0/dout] [get_bd_pins clint_0/s_axi_clint_awatop] [get_bd_pins ariane_peripherals_0/s_axi_plic_awatop] [get_bd_pins ariane_peripherals_0/s_axi_timer_awatop]
-  connect_bd_net -net atop_tieoff_dout [get_bd_pins atop_tieoff/dout] [get_bd_pins cpu_debug/s_axi_dmi_jtag_awatop]
-  connect_bd_net -net axi_bram_ctrl_0_bram_addr_a [get_bd_pins axi_bram_ctrl_0/bram_addr_a] [get_bd_pins bootrom_wrapper_0/addr_i]
-  connect_bd_net -net axi_bram_ctrl_0_bram_clk_a [get_bd_pins axi_bram_ctrl_0/bram_clk_a] [get_bd_pins bootrom_wrapper_0/clk_i]
-  connect_bd_net -net axi_bram_ctrl_0_bram_en_a [get_bd_pins axi_bram_ctrl_0/bram_en_a] [get_bd_pins bootrom_wrapper_0/req_i]
-  connect_bd_net -net axi_dma_0_mm2s_introut [get_bd_pins eth_0/mm2s_introut] [get_bd_pins irqconcat/In0]
-  connect_bd_net -net axi_dma_0_s2mm_introut [get_bd_pins eth_0/s2mm_introut] [get_bd_pins irqconcat/In1]
-  connect_bd_net -net axi_fan_control_0_irq [get_bd_pins axi_fan_control_0/irq] [get_bd_pins interrupt_sync_0/irq_in]
-  connect_bd_net -net axi_fan_control_0_pwm [get_bd_pins axi_fan_control_0/pwm] [get_bd_ports fan_pwm]
-  connect_bd_net -net axi_quad_spi_0_io0_o [get_bd_pins axi_quad_spi_0/io0_o] [get_bd_ports spi_mosi]
-  connect_bd_net -net axi_quad_spi_0_ip2intc_irpt [get_bd_pins axi_quad_spi_0/ip2intc_irpt] [get_bd_pins irqconcat/In2]
-  connect_bd_net -net axi_quad_spi_0_sck_o [get_bd_pins axi_quad_spi_0/sck_o] [get_bd_ports spi_clk_o]
-  connect_bd_net -net axi_quad_spi_0_ss_o [get_bd_pins axi_quad_spi_0/ss_o] [get_bd_ports spi_ss]
-  connect_bd_net -net axi_uart16550_0_ip2intc_irpt [get_bd_pins axi_uart16550_0/ip2intc_irpt] [get_bd_pins irqconcat/In3]
-  connect_bd_net -net bootrom_wrapper_0_rdata_o [get_bd_pins bootrom_wrapper_0/rdata_o] [get_bd_pins axi_bram_ctrl_0/bram_rddata_a]
-  connect_bd_net -net clint_0_ipi_o [get_bd_pins clint_0/ipi_o] [get_bd_pins irq_ila/probe1] [get_bd_pins cpu_0/ipi_in]
-  connect_bd_net -net clint_0_timer_irq_o [get_bd_pins clint_0/timer_irq_o] [get_bd_pins irq_ila/probe2] [get_bd_pins cpu_0/timer_irq_i]
-  connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_pins peripherals_clockgen/clk_50] [get_bd_pins axi_bram_ctrl_0/s_axi_aclk] [get_bd_pins axi_uart16550_0/s_axi_aclk] [get_bd_pins PmodGPIO_0/s_axi_aclk] [get_bd_pins axi_quad_spi_0/ext_spi_clk] [get_bd_pins axi_iic_0/s_axi_aclk] [get_bd_pins clint_0/aclk] [get_bd_pins northbridge/peripheral_aclk] [get_bd_pins eth_0/m_axi_sg_aclk] [get_bd_pins ariane_peripherals_0/aclk] [get_bd_pins cpu_reset_gen/slowest_sync_clk] [get_bd_pins northbridge/clk_cpu] [get_bd_pins axi_quad_spi_0/s_axi4_aclk] [get_bd_pins cpu_debug/aclk] [get_bd_pins memory_reset_synch/slowest_sync_clk] [get_bd_pins interrupt_sync_0/target_clock] [get_bd_pins irq_ila/clk] [get_bd_pins cpu_0/aclk]
-  connect_bd_net -net cpu_0_m_axi_cpu_awatop [get_bd_pins cpu_0/m_axi_cpu_awatop] [get_bd_pins northbridge/cpu_atop_in]
-  connect_bd_net -net cpu_debug_debug_req_irq [get_bd_pins cpu_debug/debug_req_irq] [get_bd_pins irq_ila/probe3] [get_bd_pins cpu_0/debug_req_irq]
-  connect_bd_net -net cpu_debug_jtag_tdo [get_bd_pins cpu_debug/jtag_tdo] [get_bd_ports jtag_tdo]
-  connect_bd_net -net cpu_debug_ndmreset [get_bd_pins cpu_debug/ndmreset] [get_bd_pins irq_ila/probe5] [get_bd_pins northbridge/ndmreset] [get_bd_pins cpu_reset_gen/ext_reset_in]
-  connect_bd_net -net cpu_interconnect_aresetn_1 [get_bd_pins cpu_reset_gen/interconnect_aresetn] [get_bd_pins northbridge/cpu_interconnect_aresetn]
-  connect_bd_net -net cpu_reset_gen_peripheral_aresetn [get_bd_pins cpu_reset_gen/peripheral_aresetn] [get_bd_pins eth_0/axi_resetn] [get_bd_pins eth_0/s_axi_lite_resetn] [get_bd_pins northbridge/cpu_peripheral_aresetn] [get_bd_pins axi_bram_ctrl_0/s_axi_aresetn] [get_bd_pins clint_0/aresetn] [get_bd_pins ariane_peripherals_0/aresetn] [get_bd_pins PmodGPIO_0/s_axi_aresetn] [get_bd_pins axi_quad_spi_0/s_axi4_aresetn] [get_bd_pins axi_uart16550_0/s_axi_aresetn] [get_bd_pins axi_iic_0/s_axi_aresetn] [get_bd_pins interrupt_sync_0/target_resetn] [get_bd_pins cpu_0/aresetn]
-  connect_bd_net -net eth_0_mac_irq [get_bd_pins eth_0/mac_irq] [get_bd_pins irqconcat/In5]
-  connect_bd_net -net eth_0_phy_reset_out1 [get_bd_pins eth_0/phy_reset_out] [get_bd_ports phy_reset_out]
-  connect_bd_net -net eth_clockgen_clk_125 [get_bd_pins peripherals_clockgen/clk_125] [get_bd_pins eth_0/gtx_clk]
-  connect_bd_net -net eth_clockgen_clk_200 [get_bd_pins peripherals_clockgen/clk_200] [get_bd_pins eth_0/ref_clk]
-  connect_bd_net -net fan_tach_1 [get_bd_ports fan_tach] [get_bd_pins axi_fan_control_0/tacho]
-  connect_bd_net -net interrupt_synchroniz_0_irq_out [get_bd_pins interrupt_sync_0/irq_out] [get_bd_pins irqconcat/In4]
-  connect_bd_net -net irqconcat_dout [get_bd_pins irqconcat/dout] [get_bd_pins ariane_peripherals_0/irqs_in] [get_bd_pins irq_ila/probe4]
-  connect_bd_net -net jtag_tck_1 [get_bd_ports jtag_tck] [get_bd_pins cpu_debug/jtag_tck]
-  connect_bd_net -net jtag_tdi_1 [get_bd_ports jtag_tdi] [get_bd_pins cpu_debug/jtag_tdi]
-  connect_bd_net -net jtag_tms_1 [get_bd_ports jtag_tms] [get_bd_pins cpu_debug/jtag_tms]
-  connect_bd_net -net jtag_trst_n_1 [get_bd_ports jtag_trst_n] [get_bd_pins cpu_debug/jtag_trst_n]
-  connect_bd_net -net mig_7series_0_mmcm_locked [get_bd_pins mig_7series_0/mmcm_locked] [get_bd_pins peripherals_clockgen/resetn]
-  connect_bd_net -net mig_7series_0_ui_addn_clk_0 [get_bd_pins mig_7series_0/ui_addn_clk_0] [get_bd_pins peripherals_clockgen/clk_in1]
-  connect_bd_net -net mig_7series_0_ui_clk_sync_rst [get_bd_pins mig_7series_0/ui_clk_sync_rst] [get_bd_pins reset_polarity_conv/Op1] [get_bd_pins memory_reset_synch/ext_reset_in] [get_bd_pins cpu_reset_gen/aux_reset_in]
-  connect_bd_net -net mig_aclk_1 [get_bd_pins mig_7series_0/ui_clk] [get_bd_pins northbridge/mig_aclk] [get_bd_pins xadc_wiz_0/m_axis_aclk] [get_bd_pins xadc_wiz_0/s_axis_aclk] [get_bd_pins axi_fan_control_0/s_axi_aclk] [get_bd_pins interrupt_sync_0/source_clock]
-  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins memory_reset_synch/peripheral_aresetn] [get_bd_pins cpu_debug/aresetn]
-  connect_bd_net -net reset_2 [get_bd_ports reset] [get_bd_pins mig_7series_0/sys_rst]
-  connect_bd_net -net reset_polarity_conv_Res [get_bd_pins reset_polarity_conv/Res] [get_bd_pins northbridge/mig_aresetn] [get_bd_pins mig_7series_0/aresetn] [get_bd_pins xadc_wiz_0/m_axis_resetn] [get_bd_pins axi_fan_control_0/s_axi_aresetn] [get_bd_pins interrupt_sync_0/source_resetn]
-  connect_bd_net -net spi_miso_1 [get_bd_ports spi_miso] [get_bd_pins axi_quad_spi_0/io1_i]
-  connect_bd_net -net tieoff_0_dout [get_bd_pins tieoff_1/dout] [get_bd_pins axi_uart16550_0/freeze]
-  connect_bd_net -net xadc_wiz_0_temp_out [get_bd_pins xadc_wiz_0/temp_out] [get_bd_pins mig_7series_0/device_temp_i] [get_bd_pins axi_fan_control_0/temp_in]
-  connect_bd_net -net xlconstant_0_dout [get_bd_pins tready_always_ready/dout] [get_bd_pins xadc_wiz_0/m_axis_tready]
+  connect_bd_net -net ariane_peripherals_0_irq_out  [get_bd_pins ariane_peripherals_0/irq_out] \
+  [get_bd_pins northbridge/dummy_irq_in] \
+  [get_bd_pins irq_ila/probe0] \
+  [get_bd_pins cpu_0/irqs_in]
+  connect_bd_net -net atop_tieoff_0_dout  [get_bd_pins atop_tieoff_0/dout] \
+  [get_bd_pins clint_0/s_axi_clint_awatop] \
+  [get_bd_pins ariane_peripherals_0/s_axi_plic_awatop] \
+  [get_bd_pins ariane_peripherals_0/s_axi_timer_awatop]
+  connect_bd_net -net atop_tieoff_dout  [get_bd_pins atop_tieoff/dout] \
+  [get_bd_pins cpu_debug/s_axi_dmi_jtag_awatop]
+  connect_bd_net -net axi_bram_ctrl_0_bram_addr_a  [get_bd_pins axi_bram_ctrl_0/bram_addr_a] \
+  [get_bd_pins bootrom_wrapper_0/addr_i]
+  connect_bd_net -net axi_bram_ctrl_0_bram_clk_a  [get_bd_pins axi_bram_ctrl_0/bram_clk_a] \
+  [get_bd_pins bootrom_wrapper_0/clk_i]
+  connect_bd_net -net axi_bram_ctrl_0_bram_en_a  [get_bd_pins axi_bram_ctrl_0/bram_en_a] \
+  [get_bd_pins bootrom_wrapper_0/req_i]
+  connect_bd_net -net axi_dma_0_mm2s_introut  [get_bd_pins eth_0/mm2s_introut] \
+  [get_bd_pins irqconcat/In0]
+  connect_bd_net -net axi_dma_0_s2mm_introut  [get_bd_pins eth_0/s2mm_introut] \
+  [get_bd_pins irqconcat/In1]
+  connect_bd_net -net axi_fan_control_0_irq  [get_bd_pins axi_fan_control_0/irq] \
+  [get_bd_pins interrupt_sync_0/irq_in]
+  connect_bd_net -net axi_fan_control_0_pwm  [get_bd_pins axi_fan_control_0/pwm] \
+  [get_bd_ports fan_pwm]
+  connect_bd_net -net axi_quad_spi_0_io0_o  [get_bd_pins axi_quad_spi_0/io0_o] \
+  [get_bd_ports spi_mosi]
+  connect_bd_net -net axi_quad_spi_0_ip2intc_irpt  [get_bd_pins axi_quad_spi_0/ip2intc_irpt] \
+  [get_bd_pins irqconcat/In2]
+  connect_bd_net -net axi_quad_spi_0_sck_o  [get_bd_pins axi_quad_spi_0/sck_o] \
+  [get_bd_ports spi_clk_o]
+  connect_bd_net -net axi_quad_spi_0_ss_o  [get_bd_pins axi_quad_spi_0/ss_o] \
+  [get_bd_ports spi_ss]
+  connect_bd_net -net axi_uart16550_0_ip2intc_irpt  [get_bd_pins axi_uart16550_0/ip2intc_irpt] \
+  [get_bd_pins irqconcat/In3]
+  connect_bd_net -net bootrom_wrapper_0_rdata_o  [get_bd_pins bootrom_wrapper_0/rdata_o] \
+  [get_bd_pins axi_bram_ctrl_0/bram_rddata_a]
+  connect_bd_net -net clint_0_ipi_o  [get_bd_pins clint_0/ipi_o] \
+  [get_bd_pins irq_ila/probe1] \
+  [get_bd_pins cpu_0/ipi_in]
+  connect_bd_net -net clint_0_timer_irq_o  [get_bd_pins clint_0/timer_irq_o] \
+  [get_bd_pins irq_ila/probe2] \
+  [get_bd_pins cpu_0/timer_irq_i]
+  connect_bd_net -net clk_wiz_0_clk_out1  [get_bd_pins peripherals_clockgen/clk_50] \
+  [get_bd_pins axi_bram_ctrl_0/s_axi_aclk] \
+  [get_bd_pins axi_uart16550_0/s_axi_aclk] \
+  [get_bd_pins PmodGPIO_0/s_axi_aclk] \
+  [get_bd_pins axi_quad_spi_0/ext_spi_clk] \
+  [get_bd_pins axi_iic_0/s_axi_aclk] \
+  [get_bd_pins clint_0/aclk] \
+  [get_bd_pins northbridge/peripheral_aclk] \
+  [get_bd_pins eth_0/m_axi_sg_aclk] \
+  [get_bd_pins ariane_peripherals_0/aclk] \
+  [get_bd_pins cpu_reset_gen/slowest_sync_clk] \
+  [get_bd_pins northbridge/clk_cpu] \
+  [get_bd_pins axi_quad_spi_0/s_axi4_aclk] \
+  [get_bd_pins cpu_debug/aclk] \
+  [get_bd_pins memory_reset_synch/slowest_sync_clk] \
+  [get_bd_pins interrupt_sync_0/target_clock] \
+  [get_bd_pins irq_ila/clk] \
+  [get_bd_pins cpu_0/aclk]
+  connect_bd_net -net cpu_0_m_axi_cpu_awatop  [get_bd_pins cpu_0/m_axi_cpu_awatop] \
+  [get_bd_pins northbridge/cpu_atop_in]
+  connect_bd_net -net cpu_debug_debug_req_irq  [get_bd_pins cpu_debug/debug_req_irq] \
+  [get_bd_pins irq_ila/probe3] \
+  [get_bd_pins cpu_0/debug_req_irq]
+  connect_bd_net -net cpu_debug_jtag_tdo  [get_bd_pins cpu_debug/jtag_tdo] \
+  [get_bd_ports jtag_tdo]
+  connect_bd_net -net cpu_debug_ndmreset  [get_bd_pins cpu_debug/ndmreset] \
+  [get_bd_pins irq_ila/probe5] \
+  [get_bd_pins northbridge/ndmreset] \
+  [get_bd_pins cpu_reset_gen/ext_reset_in]
+  connect_bd_net -net cpu_interconnect_aresetn_1  [get_bd_pins cpu_reset_gen/interconnect_aresetn] \
+  [get_bd_pins northbridge/cpu_interconnect_aresetn]
+  connect_bd_net -net cpu_reset_gen_peripheral_aresetn  [get_bd_pins cpu_reset_gen/peripheral_aresetn] \
+  [get_bd_pins eth_0/axi_resetn] \
+  [get_bd_pins eth_0/s_axi_lite_resetn] \
+  [get_bd_pins northbridge/cpu_peripheral_aresetn] \
+  [get_bd_pins axi_bram_ctrl_0/s_axi_aresetn] \
+  [get_bd_pins clint_0/aresetn] \
+  [get_bd_pins ariane_peripherals_0/aresetn] \
+  [get_bd_pins PmodGPIO_0/s_axi_aresetn] \
+  [get_bd_pins axi_quad_spi_0/s_axi4_aresetn] \
+  [get_bd_pins axi_uart16550_0/s_axi_aresetn] \
+  [get_bd_pins axi_iic_0/s_axi_aresetn] \
+  [get_bd_pins interrupt_sync_0/target_resetn] \
+  [get_bd_pins cpu_0/aresetn]
+  connect_bd_net -net eth_0_mac_irq  [get_bd_pins eth_0/mac_irq] \
+  [get_bd_pins irqconcat/In5]
+  connect_bd_net -net eth_0_phy_reset_out1  [get_bd_pins eth_0/phy_reset_out] \
+  [get_bd_ports phy_reset_out]
+  connect_bd_net -net eth_clockgen_clk_125  [get_bd_pins peripherals_clockgen/clk_125] \
+  [get_bd_pins eth_0/gtx_clk]
+  connect_bd_net -net eth_clockgen_clk_200  [get_bd_pins peripherals_clockgen/clk_200] \
+  [get_bd_pins eth_0/ref_clk]
+  connect_bd_net -net fan_tach_1  [get_bd_ports fan_tach] \
+  [get_bd_pins axi_fan_control_0/tacho]
+  connect_bd_net -net interrupt_synchroniz_0_irq_out  [get_bd_pins interrupt_sync_0/irq_out] \
+  [get_bd_pins irqconcat/In4]
+  connect_bd_net -net irqconcat_dout  [get_bd_pins irqconcat/dout] \
+  [get_bd_pins ariane_peripherals_0/irqs_in] \
+  [get_bd_pins irq_ila/probe4]
+  connect_bd_net -net jtag_tck_1  [get_bd_ports jtag_tck] \
+  [get_bd_pins cpu_debug/jtag_tck]
+  connect_bd_net -net jtag_tdi_1  [get_bd_ports jtag_tdi] \
+  [get_bd_pins cpu_debug/jtag_tdi]
+  connect_bd_net -net jtag_tms_1  [get_bd_ports jtag_tms] \
+  [get_bd_pins cpu_debug/jtag_tms]
+  connect_bd_net -net jtag_trst_n_1  [get_bd_ports jtag_trst_n] \
+  [get_bd_pins cpu_debug/jtag_trst_n]
+  connect_bd_net -net mig_7series_0_mmcm_locked  [get_bd_pins mig_7series_0/mmcm_locked] \
+  [get_bd_pins peripherals_clockgen/resetn]
+  connect_bd_net -net mig_7series_0_ui_addn_clk_0  [get_bd_pins mig_7series_0/ui_addn_clk_0] \
+  [get_bd_pins peripherals_clockgen/clk_in1]
+  connect_bd_net -net mig_7series_0_ui_clk_sync_rst  [get_bd_pins mig_7series_0/ui_clk_sync_rst] \
+  [get_bd_pins reset_polarity_conv/Op1] \
+  [get_bd_pins memory_reset_synch/ext_reset_in] \
+  [get_bd_pins cpu_reset_gen/aux_reset_in]
+  connect_bd_net -net mig_aclk_1  [get_bd_pins mig_7series_0/ui_clk] \
+  [get_bd_pins northbridge/mig_aclk] \
+  [get_bd_pins xadc_wiz_0/m_axis_aclk] \
+  [get_bd_pins xadc_wiz_0/s_axis_aclk] \
+  [get_bd_pins axi_fan_control_0/s_axi_aclk] \
+  [get_bd_pins interrupt_sync_0/source_clock]
+  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn  [get_bd_pins memory_reset_synch/peripheral_aresetn] \
+  [get_bd_pins cpu_debug/aresetn]
+  connect_bd_net -net reset_2  [get_bd_ports reset] \
+  [get_bd_pins mig_7series_0/sys_rst]
+  connect_bd_net -net reset_polarity_conv_Res  [get_bd_pins reset_polarity_conv/Res] \
+  [get_bd_pins northbridge/mig_aresetn] \
+  [get_bd_pins mig_7series_0/aresetn] \
+  [get_bd_pins xadc_wiz_0/m_axis_resetn] \
+  [get_bd_pins axi_fan_control_0/s_axi_aresetn] \
+  [get_bd_pins interrupt_sync_0/source_resetn]
+  connect_bd_net -net spi_miso_1  [get_bd_ports spi_miso] \
+  [get_bd_pins axi_quad_spi_0/io1_i]
+  connect_bd_net -net tieoff_0_dout  [get_bd_pins tieoff_1/dout] \
+  [get_bd_pins axi_uart16550_0/freeze]
+  connect_bd_net -net xadc_wiz_0_temp_out  [get_bd_pins xadc_wiz_0/temp_out] \
+  [get_bd_pins mig_7series_0/device_temp_i] \
+  [get_bd_pins axi_fan_control_0/temp_in]
+  connect_bd_net -net xlconstant_0_dout  [get_bd_pins tready_always_ready/dout] \
+  [get_bd_pins xadc_wiz_0/m_axis_tready]
 
   # Create address segments
   assign_bd_address -offset 0x00000000 -range 0x00010000000000000000 -target_address_space [get_bd_addr_spaces cpu_0/m_axi_cpu] [get_bd_addr_segs northbridge/axi_riscv_atomics_wrapper_0/s_axi_in/reg0] -force
@@ -1029,163 +1191,163 @@ proc create_hier_cell_northbridge { parentCell nameHier } {
   # Perform GUI Layout
   regenerate_bd_layout -layout_string {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.16629",
-   "Default View_TopLeft":"2216,79",
+   "Default View_ScaleFactor":"0.947322",
+   "Default View_TopLeft":"2033,-188",
    "ExpandedHierarchyInLayout":"/northbridge",
-   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
+   "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 TLS
 #  -string -flagsOSRD
-preplace port ja -pg 1 -lvl 7 -x 22410 -y 1710 -defaultsOSRD
-preplace port audio_codec_iic -pg 1 -lvl 7 -x 22410 -y 1520 -defaultsOSRD
+preplace port ja -pg 1 -lvl 7 -x 21620 -y 1710 -defaultsOSRD
+preplace port audio_codec_iic -pg 1 -lvl 7 -x 21620 -y 1520 -defaultsOSRD
 preplace port sys_diff_clock -pg 1 -lvl 0 -x -80 -y 430 -defaultsOSRD
-preplace port usb_uart -pg 1 -lvl 7 -x 22410 -y 1850 -defaultsOSRD
-preplace port ddr3_sdram -pg 1 -lvl 7 -x 22410 -y 400 -defaultsOSRD
-preplace port eth_rgmii -pg 1 -lvl 7 -x 22410 -y 1190 -defaultsOSRD
-preplace port eth_mdio_mdc -pg 1 -lvl 7 -x 22410 -y 1210 -defaultsOSRD
+preplace port usb_uart -pg 1 -lvl 7 -x 21620 -y 1850 -defaultsOSRD
+preplace port ddr3_sdram -pg 1 -lvl 7 -x 21620 -y 400 -defaultsOSRD
+preplace port eth_rgmii -pg 1 -lvl 7 -x 21620 -y 1190 -defaultsOSRD
+preplace port eth_mdio_mdc -pg 1 -lvl 7 -x 21620 -y 1210 -defaultsOSRD
 preplace port port-id_reset -pg 1 -lvl 0 -x -80 -y 450 -defaultsOSRD
-preplace port port-id_spi_clk_o -pg 1 -lvl 7 -x 22410 -y 2080 -defaultsOSRD
-preplace port port-id_spi_mosi -pg 1 -lvl 7 -x 22410 -y 2040 -defaultsOSRD
+preplace port port-id_spi_clk_o -pg 1 -lvl 7 -x 21620 -y 2080 -defaultsOSRD
+preplace port port-id_spi_mosi -pg 1 -lvl 7 -x 21620 -y 2040 -defaultsOSRD
 preplace port port-id_spi_miso -pg 1 -lvl 0 -x -80 -y 1960 -defaultsOSRD
-preplace port port-id_jtag_tdo -pg 1 -lvl 7 -x 22410 -y 760 -defaultsOSRD
+preplace port port-id_jtag_tdo -pg 1 -lvl 7 -x 21620 -y 760 -defaultsOSRD
 preplace port port-id_jtag_tck -pg 1 -lvl 0 -x -80 -y 330 -defaultsOSRD
 preplace port port-id_jtag_tms -pg 1 -lvl 0 -x -80 -y 350 -defaultsOSRD
 preplace port port-id_jtag_tdi -pg 1 -lvl 0 -x -80 -y 370 -defaultsOSRD
 preplace port port-id_jtag_trst_n -pg 1 -lvl 0 -x -80 -y 310 -defaultsOSRD
-preplace port port-id_fan_pwm -pg 1 -lvl 7 -x 22410 -y 670 -defaultsOSRD
+preplace port port-id_fan_pwm -pg 1 -lvl 7 -x 21620 -y 670 -defaultsOSRD
 preplace port port-id_fan_tach -pg 1 -lvl 0 -x -80 -y 760 -defaultsOSRD
-preplace portBus spi_ss -pg 1 -lvl 7 -x 22410 -y 2100 -defaultsOSRD
-preplace portBus phy_reset_out -pg 1 -lvl 7 -x 22410 -y 1450 -defaultsOSRD
-preplace inst axi_bram_ctrl_0 -pg 1 -lvl 5 -x 21780 -y 870 -defaultsOSRD
-preplace inst tieoff_1 -pg 1 -lvl 4 -x 1840 -y 10960 -defaultsOSRD
-preplace inst axi_uart16550_0 -pg 1 -lvl 5 -x 21780 -y 1860 -defaultsOSRD
+preplace portBus spi_ss -pg 1 -lvl 7 -x 21620 -y 2100 -defaultsOSRD
+preplace portBus phy_reset_out -pg 1 -lvl 7 -x 21620 -y 1450 -defaultsOSRD
+preplace inst axi_bram_ctrl_0 -pg 1 -lvl 5 -x 20990 -y 870 -defaultsOSRD
+preplace inst tieoff_1 -pg 1 -lvl 4 -x 1840 -y 10930 -defaultsOSRD
+preplace inst axi_uart16550_0 -pg 1 -lvl 5 -x 20990 -y 1860 -defaultsOSRD
 preplace inst peripherals_clockgen -pg 1 -lvl 1 -x 90 -y 850 -defaultsOSRD
-preplace inst axi_quad_spi_0 -pg 1 -lvl 5 -x 21780 -y 2070 -defaultsOSRD
-preplace inst PmodGPIO_0 -pg 1 -lvl 5 -x 21780 -y 1710 -defaultsOSRD
-preplace inst axi_iic_0 -pg 1 -lvl 5 -x 21780 -y 1540 -defaultsOSRD
+preplace inst axi_quad_spi_0 -pg 1 -lvl 5 -x 20990 -y 2070 -defaultsOSRD
+preplace inst PmodGPIO_0 -pg 1 -lvl 5 -x 20990 -y 1710 -defaultsOSRD
+preplace inst axi_iic_0 -pg 1 -lvl 5 -x 20990 -y 1540 -defaultsOSRD
 preplace inst reset_polarity_conv -pg 1 -lvl 2 -x 420 -y 690 -defaultsOSRD
-preplace inst bootrom_wrapper_0 -pg 1 -lvl 6 -x 22235 -y 840 -defaultsOSRD
-preplace inst ariane_peripherals_0 -pg 1 -lvl 5 -x 21780 -y 1330 -defaultsOSRD
-preplace inst atop_tieoff_0 -pg 1 -lvl 4 -x 1840 -y 10180 -defaultsOSRD
-preplace inst irqconcat -pg 1 -lvl 4 -x 1840 -y 10480 -defaultsOSRD
+preplace inst bootrom_wrapper_0 -pg 1 -lvl 6 -x 21445 -y 840 -defaultsOSRD
+preplace inst ariane_peripherals_0 -pg 1 -lvl 5 -x 20990 -y 1330 -defaultsOSRD
+preplace inst atop_tieoff_0 -pg 1 -lvl 4 -x 1840 -y 10150 -defaultsOSRD
+preplace inst irqconcat -pg 1 -lvl 4 -x 1840 -y 10450 -defaultsOSRD
 preplace inst cpu_0 -pg 1 -lvl 3 -x 980 -y 750 -defaultsOSRD
-preplace inst clint_0 -pg 1 -lvl 5 -x 21780 -y 1080 -defaultsOSRD
+preplace inst clint_0 -pg 1 -lvl 5 -x 20990 -y 1080 -defaultsOSRD
 preplace inst northbridge -pg 1 -lvl 4 -x 1840 -y -34 -defaultsOSRD
 preplace inst eth_0 -pg 1 -lvl 3 -x 980 -y 1250 -defaultsOSRD
 preplace inst cpu_reset_gen -pg 1 -lvl 2 -x 420 -y 550 -defaultsOSRD
-preplace inst mig_7series_0 -pg 1 -lvl 5 -x 21780 -y 450 -defaultsOSRD
+preplace inst mig_7series_0 -pg 1 -lvl 5 -x 20990 -y 450 -defaultsOSRD
 preplace inst cpu_debug -pg 1 -lvl 3 -x 980 -y 300 -defaultsOSRD
 preplace inst atop_tieoff -pg 1 -lvl 2 -x 420 -y 50 -defaultsOSRD
 preplace inst memory_reset_synch -pg 1 -lvl 2 -x 420 -y 190 -defaultsOSRD
-preplace inst axi_fan_control_0 -pg 1 -lvl 5 -x 21780 -y 660 -defaultsOSRD
+preplace inst axi_fan_control_0 -pg 1 -lvl 5 -x 20990 -y 660 -defaultsOSRD
 preplace inst xadc_wiz_0 -pg 1 -lvl 4 -x 1840 -y -530 -defaultsOSRD
-preplace inst tready_always_ready -pg 1 -lvl 5 -x 21780 -y 150 -defaultsOSRD
+preplace inst tready_always_ready -pg 1 -lvl 5 -x 20990 -y 150 -defaultsOSRD
 preplace inst interrupt_sync_0 -pg 1 -lvl 3 -x 980 -y 1470 -defaultsOSRD
-preplace inst irq_ila -pg 1 -lvl 6 -x 22235 -y 1080 -defaultsOSRD
-preplace inst northbridge|axi_interconnect_0 -pg 1 -lvl 4 -x 3320 -y 586 -defaultsOSRD
-preplace inst northbridge|axi_riscv_atomics_wrapper_0 -pg 1 -lvl 3 -x 2880 -y 546 -defaultsOSRD
-preplace inst northbridge|axidebug_0 -pg 1 -lvl 3 -x 2880 -y 296 -defaultsOSRD
-preplace netloc ariane_peripherals_0_irq_out 1 2 4 740 860 1540 1060 21530J 980 22000
-preplace netloc atop_tieoff_0_dout 1 4 1 21570 1110n
-preplace netloc atop_tieoff_dout 1 2 1 660 50n
-preplace netloc axi_bram_ctrl_0_bram_addr_a 1 5 1 22040 850n
-preplace netloc axi_bram_ctrl_0_bram_clk_a 1 5 1 21980 820n
-preplace netloc axi_bram_ctrl_0_bram_en_a 1 5 1 21990 840n
-preplace netloc axi_dma_0_mm2s_introut 1 3 1 1310 1260n
-preplace netloc axi_dma_0_s2mm_introut 1 3 1 1270 1280n
-preplace netloc axi_fan_control_0_irq 1 2 4 680 -304 NJ -304 NJ -304 21970
+preplace inst irq_ila -pg 1 -lvl 6 -x 21445 -y 1080 -defaultsOSRD
+preplace inst northbridge|axi_interconnect_0 -pg 1 -lvl 2 -x 2520 -y 546 -defaultsOSRD
+preplace inst northbridge|axi_riscv_atomics_wrapper_0 -pg 1 -lvl 1 -x 1970 -y -24 -defaultsOSRD
+preplace inst northbridge|axidebug_0 -pg 1 -lvl 2 -x 2520 -y -34 -defaultsOSRD
+preplace netloc ariane_peripherals_0_irq_out 1 2 4 740 860 1530 1854 20670J 970 21180
+preplace netloc atop_tieoff_0_dout 1 4 1 20750 1110n
+preplace netloc atop_tieoff_dout 1 2 1 700 50n
+preplace netloc axi_bram_ctrl_0_bram_addr_a 1 5 1 21230 850n
+preplace netloc axi_bram_ctrl_0_bram_clk_a 1 5 1 21170 820n
+preplace netloc axi_bram_ctrl_0_bram_en_a 1 5 1 21190 840n
+preplace netloc axi_dma_0_mm2s_introut 1 3 1 1270 1260n
+preplace netloc axi_dma_0_s2mm_introut 1 3 1 1250 1280n
+preplace netloc axi_fan_control_0_irq 1 2 4 700 560 1330J 1444 20600J 560 21170
 preplace netloc axi_fan_control_0_pwm 1 5 2 NJ 670 NJ
 preplace netloc axi_quad_spi_0_io0_o 1 5 2 NJ 2040 NJ
-preplace netloc axi_quad_spi_0_ip2intc_irpt 1 3 3 1540 1630 NJ 1630 22020
+preplace netloc axi_quad_spi_0_ip2intc_irpt 1 3 3 1540 2514 20780J 1630 21210
 preplace netloc axi_quad_spi_0_sck_o 1 5 2 NJ 2080 NJ
 preplace netloc axi_quad_spi_0_ss_o 1 5 2 NJ 2100 NJ
-preplace netloc axi_uart16550_0_ip2intc_irpt 1 3 3 1550 1950 NJ 1950 21980
-preplace netloc bootrom_wrapper_0_rdata_o 1 5 2 22000J 920 22380
-preplace netloc clint_0_ipi_o 1 2 4 720 1090 NJ 1090 3630J 990 21990
-preplace netloc clint_0_timer_irq_o 1 2 4 710 1120 NJ 1120 3660J 1170 21970
-preplace netloc clk_wiz_0_clk_out1 1 1 5 220 290 650 160 1530 -224 21510 970 22010
-preplace netloc cpu_0_m_axi_cpu_awatop 1 3 1 1510 176n
-preplace netloc cpu_debug_debug_req_irq 1 2 4 730 870 1280 1180 NJ 1180 22030J
-preplace netloc cpu_debug_jtag_tdo 1 3 4 1220J -284 NJ -284 NJ -284 22380J
-preplace netloc cpu_debug_ndmreset 1 1 5 240 -10 NJ -10 1520 -244 NJ -244 22020J
-preplace netloc cpu_interconnect_aresetn_1 1 2 2 NJ 570 1220
-preplace netloc cpu_reset_gen_peripheral_aresetn 1 2 3 630 590 1230 -214 21450
-preplace netloc eth_0_mac_irq 1 3 1 1240 1320n
-preplace netloc eth_0_phy_reset_out1 1 3 4 NJ 1300 3660J 1450 NJ 1450 NJ
-preplace netloc eth_clockgen_clk_125 1 1 2 240 1060 640J
-preplace netloc eth_clockgen_clk_200 1 1 2 200 1070 600J
-preplace netloc fan_tach_1 1 0 5 -50J -254 NJ -254 630J -264 NJ -264 21560J
+preplace netloc axi_uart16550_0_ip2intc_irpt 1 3 3 1550 2834 20790J 1950 21170
+preplace netloc bootrom_wrapper_0_rdata_o 1 5 2 21230J 920 21590
+preplace netloc clint_0_ipi_o 1 2 4 720 1110 1310J 1994 20690J 1170 21210
+preplace netloc clint_0_timer_irq_o 1 2 4 710 1120 1300J 2004 20700J 1180 21170
+preplace netloc clk_wiz_0_clk_out1 1 1 5 220 290 670 170 1400 1054 20720 990 21190
+preplace netloc cpu_0_m_axi_cpu_awatop 1 3 1 1420 256n
+preplace netloc cpu_debug_debug_req_irq 1 2 4 730 870 1360 1864 20680J 980 21200J
+preplace netloc cpu_debug_jtag_tdo 1 3 4 1480J 1184 2860J 300 NJ 300 21590J
+preplace netloc cpu_debug_ndmreset 1 1 5 240 440 NJ 440 1430 1204 2880J 320 21220J
+preplace netloc cpu_interconnect_aresetn_1 1 2 2 610J 150 1320
+preplace netloc cpu_reset_gen_peripheral_aresetn 1 2 3 650 590 1540 1474 20740
+preplace netloc eth_0_mac_irq 1 3 1 1230 1320n
+preplace netloc eth_0_phy_reset_out1 1 3 4 1260J 2184 20760J 1450 NJ 1450 NJ
+preplace netloc eth_clockgen_clk_125 1 1 2 240 920 610J
+preplace netloc eth_clockgen_clk_200 1 1 2 200 930 600J
+preplace netloc fan_tach_1 1 0 5 -60J 420 NJ 420 620J 470 1460J 1354 20590J
 preplace netloc interrupt_synchroniz_0_irq_out 1 3 1 1220 1470n
-preplace netloc irqconcat_dout 1 4 2 21590 1190 22040
+preplace netloc irqconcat_dout 1 4 2 20770 1190 21230
 preplace netloc jtag_tck_1 1 0 3 NJ 330 NJ 330 NJ
 preplace netloc jtag_tdi_1 1 0 3 NJ 370 NJ 370 NJ
 preplace netloc jtag_tms_1 1 0 3 NJ 350 NJ 350 NJ
 preplace netloc jtag_trst_n_1 1 0 3 NJ 310 NJ 310 NJ
-preplace netloc mig_7series_0_mmcm_locked 1 0 6 -30 1080 NJ 1080 NJ 1080 NJ 1080 21540J 770 21960
-preplace netloc mig_7series_0_ui_addn_clk_0 1 0 6 -20 -344 NJ -344 NJ -344 NJ -344 NJ -344 21990
-preplace netloc mig_7series_0_ui_clk_sync_rst 1 1 5 230 -334 NJ -334 NJ -334 NJ -334 21980
-preplace netloc mig_aclk_1 1 2 4 740 1070 1250 1070 21440 760 22000
-preplace netloc proc_sys_reset_0_peripheral_aresetn 1 2 1 610 230n
-preplace netloc reset_2 1 0 5 -40J -234 NJ -234 NJ -234 NJ -234 21580J
-preplace netloc reset_polarity_conv_Res 1 2 3 670 170 1500 -314 21570
-preplace netloc spi_miso_1 1 0 6 NJ 1960 NJ 1960 NJ 1960 NJ 1960 NJ 1960 21960
-preplace netloc tieoff_0_dout 1 4 1 21600J 1890n
-preplace netloc xadc_wiz_0_temp_out 1 4 1 21590 -420n
-preplace netloc xlconstant_0_dout 1 4 2 NJ -620 21960
-preplace netloc ETH_DMA_AXI_0_1 1 3 1 1270 96n
+preplace netloc mig_7series_0_mmcm_locked 1 0 6 -30 940 NJ 940 NJ 940 1320J 1654 20620J 770 21180
+preplace netloc mig_7series_0_ui_addn_clk_0 1 0 6 -20 400 NJ 400 640J 460 1490J 1214 2900J 330 21180
+preplace netloc mig_7series_0_ui_clk_sync_rst 1 1 5 230 410 630J 450 1500J 1224 2910J 340 21170
+preplace netloc mig_aclk_1 1 2 4 740 880 1470 1564 20610 760 21190
+preplace netloc proc_sys_reset_0_peripheral_aresetn 1 2 1 690 230n
+preplace netloc reset_2 1 0 5 NJ 450 NJ 450 600J 480 1450J 1364 2940J
+preplace netloc reset_polarity_conv_Res 1 2 3 680 500 1520 1384 20580
+preplace netloc spi_miso_1 1 0 6 NJ 1960 NJ 1960 NJ 1960 1240J 2844 20800J 1960 21170
+preplace netloc tieoff_0_dout 1 4 1 20810J 1890n
+preplace netloc xadc_wiz_0_temp_out 1 4 1 20740 -420n
+preplace netloc xlconstant_0_dout 1 4 2 NJ -620 21170
+preplace netloc ETH_DMA_AXI_0_1 1 3 1 1340 156n
 preplace netloc PmodGPIO_0_Pmod_out 1 5 2 NJ 1710 NJ
 preplace netloc axi_iic_0_IIC 1 5 2 NJ 1520 NJ
-preplace netloc axi_interconnect_0_M01_AXI 1 4 1 21500 486n
-preplace netloc axi_interconnect_0_M02_AXI 1 2 3 700 -294 NJ -294 3620
-preplace netloc axi_interconnect_0_M03_AXI 1 2 3 690 -254 NJ -254 3630
-preplace netloc axi_interconnect_0_M04_AXI 1 4 1 3620 686n
-preplace netloc axi_interconnect_0_M05_AXI 1 4 1 21550 566n
-preplace netloc axi_interconnect_0_M07_AXI 1 4 1 21490 606n
-preplace netloc axi_interconnect_0_M08_AXI 1 4 1 21460 626n
-preplace netloc axi_interconnect_0_M09_AXI 1 4 1 21520 646n
-preplace netloc axi_interconnect_0_M10_AXI 1 4 1 21480 666n
+preplace netloc axi_interconnect_0_M01_AXI 1 4 1 20660 446n
+preplace netloc axi_interconnect_0_M02_AXI 1 2 3 690 490 1440J 1374 2830
+preplace netloc axi_interconnect_0_M03_AXI 1 2 3 640 510 1350J 1394 2840
+preplace netloc axi_interconnect_0_M04_AXI 1 4 1 20640 646n
+preplace netloc axi_interconnect_0_M05_AXI 1 4 1 20730 526n
+preplace netloc axi_interconnect_0_M07_AXI 1 4 1 2870 566n
+preplace netloc axi_interconnect_0_M08_AXI 1 4 1 20630 586n
+preplace netloc axi_interconnect_0_M09_AXI 1 4 1 20650 606n
+preplace netloc axi_interconnect_0_M10_AXI 1 4 1 2890 626n
 preplace netloc axi_uart16550_0_UART 1 5 2 NJ 1850 NJ
-preplace netloc cpu_0_m_axi_cpu 1 3 1 1260 76n
-preplace netloc cpu_debug_m_axi_dmi_jtag 1 3 1 1240 136n
-preplace netloc eth_0_M_AXI 1 3 1 1290 116n
-preplace netloc eth_0_eth_mdio_mdc 1 3 4 1320J 1200 NJ 1200 NJ 1200 22390J
-preplace netloc eth_0_eth_rgmii 1 3 4 1340J 1210 NJ 1210 NJ 1210 22380J
+preplace netloc cpu_0_m_axi_cpu 1 3 1 1300 -124n
+preplace netloc cpu_debug_m_axi_dmi_jtag 1 3 1 1330 216n
+preplace netloc eth_0_M_AXI 1 3 1 1410 176n
+preplace netloc eth_0_eth_mdio_mdc 1 3 4 1280J 2084 20710J 1200 NJ 1200 21600J
+preplace netloc eth_0_eth_rgmii 1 3 4 1290J 2094 20730J 1210 NJ 1210 21590J
 preplace netloc mig_7series_0_DDR3 1 5 2 NJ 400 NJ
-preplace netloc northbridge_M00_AXI 1 4 1 3650 410n
-preplace netloc northbridge_M06_AXI 1 4 1 3650 706n
-preplace netloc northbridge_M12_AXI 1 2 3 740 -274 NJ -274 3640
-preplace netloc northbridge_M13_AXI 1 4 1 21470 620n
-preplace netloc sys_diff_clock_1 1 0 5 -60J -324 NJ -324 NJ -324 NJ -324 21600J
-preplace netloc northbridge|S02_ARESETN_1 1 0 3 1770 526 N 526 2640
-preplace netloc northbridge|S02_ARESETN_2 1 0 4 NJ 556 N 556 2630 126 3110
-preplace netloc northbridge|aclk1_1 1 0 4 N 536 N 536 2650 446 3100
-preplace netloc northbridge|axi_riscv_atomics_wrapper_0_m_axi_out_awatop 1 0 3 NJ 176 N 176 2620J
-preplace netloc northbridge|axi_riscv_atomics_wrapper_0_m_axi_out_awatop1 1 2 2 2670 96 3080
-preplace netloc northbridge|clk_wiz_0_clk_out1 1 0 4 NJ 156 NJ 156 2450J 86 3140
-preplace netloc northbridge|dummy_irq_in_1 1 0 3 1750J 546 N 546 2440J
-preplace netloc northbridge|mig_7series_0_ui_clk 1 0 4 1740J 66 NJ 66 NJ 66 3150
-preplace netloc northbridge|probe5_1 1 0 3 1760J 366 NJ 366 N
-preplace netloc northbridge|reset_polarity_conv_Res 1 0 4 1770J 76 NJ 76 NJ 76 3130
-preplace netloc northbridge|Conn3 1 4 1 3500 546n
-preplace netloc northbridge|Conn4 1 4 1 3490 586n
-preplace netloc northbridge|axi_interconnect_0_M00_AXI 1 4 1 N 466
-preplace netloc northbridge|axi_interconnect_0_M01_AXI 1 4 1 N 486
-preplace netloc northbridge|axi_interconnect_0_M02_AXI 1 4 1 N 506
-preplace netloc northbridge|axi_interconnect_0_M03_AXI 1 4 1 N 526
-preplace netloc northbridge|axi_interconnect_0_M05_AXI 1 4 1 N 566
-preplace netloc northbridge|axi_interconnect_0_M07_AXI 1 4 1 N 606
-preplace netloc northbridge|axi_interconnect_0_M08_AXI 1 4 1 N 626
-preplace netloc northbridge|axi_interconnect_0_M09_AXI 1 4 1 N 646
-preplace netloc northbridge|axi_interconnect_0_M10_AXI 1 4 1 N 666
-preplace netloc northbridge|axi_riscv_atomics_wrapper_0_m_axi_out 1 2 2 2680 146 3090
-preplace netloc northbridge|ETH_DMA_AXI_1_1 1 0 4 NJ 116 NJ 116 NJ 116 3160
-preplace netloc northbridge|DEBUG_MODULE_AXI_1 1 0 4 NJ 136 NJ 136 NJ 136 3120
-preplace netloc northbridge|CPU_AXI_1 1 0 3 1760 96 NJ 96 2660J
-preplace netloc northbridge|axi_interconnect_0_M11_AXI 1 4 1 3480 686n
-preplace netloc northbridge|axi_interconnect_0_M12_AXI 1 4 1 3470 706n
-preplace netloc northbridge|ETH_DMA_AXI_0_1 1 0 4 1750J 106 NJ 106 NJ 106 3170
-levelinfo -pg 1 -80 90 420 980 1840 21780 22235 22410
-levelinfo -hier northbridge * 1960 2420 2880 3320 *
-pagesize -pg 1 -db -bbox -sgen -230 -800 22600 11020
-pagesize -hier northbridge -db -bbox -sgen 1710 -184 3530 1036
+preplace netloc northbridge_M00_AXI 1 4 1 2890 410n
+preplace netloc northbridge_M06_AXI 1 4 1 2850 666n
+preplace netloc northbridge_M12_AXI 1 2 3 740 160 1310J 1044 2820
+preplace netloc northbridge_M13_AXI 1 4 1 2920 620n
+preplace netloc sys_diff_clock_1 1 0 5 NJ 430 NJ 430 NJ 430 1510J 1314 2930J
+preplace netloc northbridge|S02_ARESETN_1 1 0 2 NJ 376 2300
+preplace netloc northbridge|S02_ARESETN_2 1 0 2 1770 356 2360
+preplace netloc northbridge|aclk1_1 1 0 2 1740 336 2320
+preplace netloc northbridge|axi_riscv_atomics_wrapper_0_m_axi_out_awatop 1 0 2 1760 246 2290
+preplace netloc northbridge|axi_riscv_atomics_wrapper_0_m_axi_out_awatop1 1 1 1 2300 -24n
+preplace netloc northbridge|clk_wiz_0_clk_out1 1 0 2 NJ 236 2370
+preplace netloc northbridge|dummy_irq_in_1 1 0 1 1750 -4n
+preplace netloc northbridge|mig_7series_0_ui_clk 1 0 2 NJ 276 2350
+preplace netloc northbridge|probe5_1 1 0 2 NJ 396 2330
+preplace netloc northbridge|reset_polarity_conv_Res 1 0 2 NJ 296 2340
+preplace netloc northbridge|CPU_AXI_1 1 0 2 1740 -124 N
+preplace netloc northbridge|Conn3 1 2 1 2700 506n
+preplace netloc northbridge|Conn4 1 2 1 2690 546n
+preplace netloc northbridge|DEBUG_MODULE_AXI_1 1 0 2 NJ 216 N
+preplace netloc northbridge|ETH_DMA_AXI_0_1 1 0 2 NJ 156 N
+preplace netloc northbridge|ETH_DMA_AXI_1_1 1 0 2 NJ 176 N
+preplace netloc northbridge|axi_interconnect_0_M00_AXI 1 2 1 N 426
+preplace netloc northbridge|axi_interconnect_0_M01_AXI 1 2 1 N 446
+preplace netloc northbridge|axi_interconnect_0_M02_AXI 1 2 1 N 466
+preplace netloc northbridge|axi_interconnect_0_M03_AXI 1 2 1 N 486
+preplace netloc northbridge|axi_interconnect_0_M05_AXI 1 2 1 N 526
+preplace netloc northbridge|axi_interconnect_0_M07_AXI 1 2 1 N 566
+preplace netloc northbridge|axi_interconnect_0_M08_AXI 1 2 1 N 586
+preplace netloc northbridge|axi_interconnect_0_M09_AXI 1 2 1 N 606
+preplace netloc northbridge|axi_interconnect_0_M10_AXI 1 2 1 N 626
+preplace netloc northbridge|axi_interconnect_0_M11_AXI 1 2 1 2680 646n
+preplace netloc northbridge|axi_interconnect_0_M12_AXI 1 2 1 2670 666n
+preplace netloc northbridge|axi_riscv_atomics_wrapper_0_m_axi_out 1 1 1 2310 -104n
+levelinfo -pg 1 -80 90 420 980 1840 20990 21445 21620
+levelinfo -hier northbridge * 1970 2520 *
+pagesize -pg 1 -db -bbox -sgen -230 -800 22870 12390
+pagesize -hier northbridge -db -bbox -sgen 1710 -184 2730 996
 "
 }
 

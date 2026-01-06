@@ -56,6 +56,7 @@ ariane_peripherals #(
     .ethernet     ( master[ariane_soc::Ethernet] ),
     .timer        ( master[ariane_soc::Timer]    ),
     .irq_i        ( irqs_in                      ),
+    .irq_levels_i ( '0                           ), // all level triggered in this design
     .irq_o        ( irq_out                      ),
     .rx_i         ( 0                            ),
     .tx_o         ( /* not used*/                ),

@@ -143,7 +143,7 @@ add_files -fileset $obj -norecurse [file normalize " $origin_dir/hardware/includ
 add_files -fileset $obj -scan_for_includes -verbose [file normalize "$origin_dir/hardware/hdl"]
 
 remove_files -fileset $obj "*cv64a6_imafdc_sv39_config_pkg.sv"
-add_files "$origin_dir/hardware/include/cva6/core/include/cv64a6_imafdc_sv39_xlnx_eth_config_pkg.sv"
+add_files "$origin_dir/hardware/include/cva6/core/include/cv64a6_imafdc_sv39_hpdcache_wb_config_pkg.sv"
 
 set_property include_dirs [list \
 	"$origin_dir/hardware/include/cva6/vendor/pulp-platform/common_cells/include" \

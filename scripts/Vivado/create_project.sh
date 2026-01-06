@@ -1,16 +1,19 @@
 #!/bin/bash
 
+set -e
+set -x
+
 TOPDIR=$(realpath $(dirname $0)/../..)
 echo "Assuming topdir $TOPDIR"
 
 echo "Removing old project"
-rm -r project 2>/dev/null
+rm -r project 2>/dev/null || true
 
 echo "Generating cva6 source list"
 export HAS_ETHERNET=1 
 export HAS_ETHERNET_XLNX=1
-make -C ../../hardware/include/cva6 fpga-source-list src/bootrom/bootrom_64.sv || exit 1
-sed -i "s|src/bootrom/bootrom|$TOPDIR/hardware/include/cva6/corev_apu/fpga/src/bootrom/bootrom|g" $TOPDIR/hardware/include/cva6/corev_apu/fpga/scripts/add_sources.tcl
+(cd ../../hardware/include/cva6; pwd; make fpga-source-list; make corev_apu/fpga/src/bootrom/bootrom_64.sv)
+# sed -i "s|src/bootrom/bootrom|$TOPDIR/hardware/include/cva6/corev_apu/fpga/src/bootrom/bootrom|g" $TOPDIR/hardware/include/cva6/corev_apu/fpga/scripts/add_sources.tcl
 
 if [ -d vivado-library ];
 then
@@ -29,4 +32,4 @@ else
 fi
 
 echo "Creating Vivado project"
-/opt/Xilinx/Vivado/2023.2/bin/vivado -mode batch -source create_project.tcl || exit 1
+/opt/Xilinx/Vivado/2024.2/bin/vivado -mode batch -source create_project.tcl || exit 1
